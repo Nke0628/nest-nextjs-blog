@@ -6,11 +6,22 @@ services:
     tty: true
     ports:
       - "3000:3000"
+      - "5555:5555"
     volumes:
       - type: bind
         source: ./backend
         target: /backend
     command: bash -c "yarn start:dev"
+  db:
+    container_name: postgres-db
+    image: postgres:14.4-alpine
+    ports:
+      - 5434:5432
+    environment:
+      POSTGRES_USER: udemy
+      POSTGRES_PASSWORD: udemy
+      POSTGRES_DB: udemy
+    restart: always
   frontend:
     container_name: next-frontend
     build: ./frontend/docker
