@@ -11,7 +11,7 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get()
-  getLoginuser(@Req() req: Request): Omit<User, 'hashedPassword'> {
+  getLoginUser(@Req() req: Request): Omit<User, 'hashedPassword'> {
     return req.user
   }
 
